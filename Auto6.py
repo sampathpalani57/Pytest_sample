@@ -1,20 +1,14 @@
-
-from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import service
+from selenium import webdriver
+from selenium.webdriver.common import by
 import time
-from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import service
 
-
-
-driver = webdriver.Chrome(ChromeDriverManager().install())
-driver.maximize_window()
+#driver = webdriver.Chrome(ChromeDriverManager().install())
+driver = webdriver.Chrome(executable_path=r"../driver/chromedriver.exe")
 driver.delete_all_cookies()
+driver.maximize_window()
+
 driver.get("https://testautomationpractice.blogspot.com/")
-title = driver.title
-print("the page title is:", title)
-Current_URL = driver.current_url
-print("the current page uRL is:", Current_URL)
-driver.switch_to.frame(0)
-driver.find_element(By.ID, 'RESULT_FileUpload-10').send_keys("D://images/apple2.jpg")
-time.sleep(4)
+driver.get_screenshot_as_file(r'C:\Users\sampa\pythonProject4\Helloworld\Automation project\screenshots\sampath.png')
+driver.quit()
